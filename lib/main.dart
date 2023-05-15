@@ -17,14 +17,14 @@ class MyApp extends StatelessWidget {
   final _theme = ThemeData(
     useMaterial3: true,
     colorScheme: _colorScheme,
-    textTheme: GoogleFonts.latoTextTheme(),
+    textTheme: GoogleFonts.latoTextTheme(),    
   );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: _theme,
-      home: Scaffold(
+      home: const Scaffold(
         body: Text('data'),
       ),
     );
