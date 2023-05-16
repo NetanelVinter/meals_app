@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/data/dummy_data.dart';
+import 'package:meals_app/widgets/category_item.dart';
+import 'package:meals_app/widgets/drawer_item.dart';
+
+import '../models/category.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
 
+  final List<Category> categoryList = availableCategories;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meals App'),
-      ),
+    return Scaffold( 
+      appBar: AppBar(title: Text('Category')),
+      drawer: const DrawerItem(),      
       body: GridView(
+        padding: const EdgeInsets.all(12),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.5,
-          crossAxisSpacing: 20,
+          crossAxisSpacing: 15,
           mainAxisSpacing: 20,
         ),
-        children: const [
-          Text('cate', style: TextStyle(color: Colors.white)),
-          Text('cate', style: TextStyle(color: Colors.white)),
-          Text('cate', style: TextStyle(color: Colors.white)),
-          Text('cate', style: TextStyle(color: Colors.white)),
-          Text('cate', style: TextStyle(color: Colors.white)),
-          Text('cate', style: TextStyle(color: Colors.white)),
+        children: [
+          for(Category cate in categoryList)
+            CategoryItem(cate)          
         ],
       ),
     );
