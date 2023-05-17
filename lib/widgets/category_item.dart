@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/constant/routes.dart';
+import 'package:meals_app/providers/meals_provider.dart';
 
 import '../models/category.dart';
 
-class CategoryItem extends StatelessWidget {
+class CategoryItem extends ConsumerWidget {
   const CategoryItem(this.category, {super.key});
 
-  final Category category;
+  final Category category;  
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        ref.read(mealsProvider.notifier).setStateByCategory(category);
+        Navigator.pushNamed(context, mealsScreenRoute);
+      },
       splashColor: Theme.of(context).primaryColorLight.withOpacity(0.7),
       borderRadius: BorderRadius.circular(16),
       child: Container(

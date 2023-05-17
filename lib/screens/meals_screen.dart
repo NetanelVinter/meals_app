@@ -44,8 +44,7 @@ class MealsScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Meals'),),
-      drawer: const DrawerItem(),
+      appBar: AppBar(title: const Text('Meals'),),      
       body: mainWidget,
     );
   }
