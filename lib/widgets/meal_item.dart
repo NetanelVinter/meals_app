@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import '../models/meal.dart';
@@ -30,18 +31,34 @@ class MealItem extends StatelessWidget {
             right: 0,                
             child: Container(         
               padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 6),     
-              color: Colors.black54,
-              child: Text(
-                meal.title,
-                maxLines: 2,
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              //color: Colors.black54,
+              color: Theme.of(context).colorScheme.background.withOpacity(0.5),
+              child: Column(
+                children: [
+                  Text(
+                    meal.title,
+                    maxLines: 2,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,                    
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MealItemTrait(icon: Icons.schedule, label: '${meal.duration} min'),
+                      const SizedBox(width: 12),
+                      MealItemTrait(icon: Icons.work, label: meal.complexity.name),
+                      const SizedBox(width: 12),
+                      MealItemTrait(icon: Icons.attach_money, label: meal.affordability.name),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
