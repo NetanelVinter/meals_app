@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals_app/providers/meals_provider.dart';
-import 'package:meals_app/widgets/drawer_item.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
 import '../models/meal.dart';
 
 class MealsScreen extends ConsumerWidget {
-  const MealsScreen({super.key});
+  const MealsScreen(this.mealList, {super.key, this.showAppBar = true,});
+
+  final bool? showAppBar;
+  final List<Meal> mealList;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    List<Meal> mealsList = ref.watch(mealsProvider);
+  Widget build(BuildContext context, WidgetRef ref) {    
     Widget mainWidget;
 
-    if (mealsList.isEmpty) {
+    if (mealList.isEmpty) {
       mainWidget = Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               'Uh oh... nothing here!',
@@ -34,17 +36,20 @@ class MealsScreen extends ConsumerWidget {
           ],
         ),
       );
-    }
-    else
-    {
+    } else {
       mainWidget = ListView.builder(
-        itemCount: mealsList.length,
-        itemBuilder: (context, index) => MealItem(mealsList[index]),        
+        itemCount: mealList.length,
+        itemBuilder: (context, index) => MealItem(mealList[index]),
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Meals'),),      
+
+    if (showAppBar == false){
+      return mainWidget;
+    }
+
+    return Scaffold(  
+      appBar: AppBar(title: const Text('Meals'),),
       body: mainWidget,
     );
   }

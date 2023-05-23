@@ -8,9 +8,9 @@ import 'package:meals_app/models/category.dart';
 import '../models/meal.dart';
 
 
-class MealsProvider extends StateNotifier<List<Meal>>
+class CategoryMealsProvider extends StateNotifier<List<Meal>>
 {
-  MealsProvider() :  super([]);
+  CategoryMealsProvider() :  super([]);
 
   void setStateByCategory(Category cate) 
   {
@@ -27,4 +27,4 @@ class MealsProvider extends StateNotifier<List<Meal>>
   }   
 }
 
-final mealsProvider = StateNotifierProvider<MealsProvider , List<Meal>>((ref) => MealsProvider());
+final mealsProvider = StateNotifierProvider<CategoryMealsProvider , List<Meal>>((ref) => CategoryMealsProvider());

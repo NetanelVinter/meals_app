@@ -18,13 +18,9 @@ class DrawerItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextButton(
-                onPressed: () => Navigator.pushNamed(context, mealsScreenRoute),
-                child: const Text('Meals'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pushNamed(context, categorysScreenRoute),
-                child: const Text('Category'),
-              )
+                onPressed: () => Navigator.pushNamed(context, homeScreenRoute),
+                child: const Text('Home'),
+              ),              
             ],
           ),
         ));
