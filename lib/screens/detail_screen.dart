@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/providers/favorite_meals_provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends ConsumerWidget {
   const DetailScreen(this.meal, {super.key});
 
   final Meal meal;
 
+  void addFavoriteMeal(WidgetRef ref, List<Meal> meals) {
+    meals.contains(meal) == false
+        ? ref.read(favoriteMealsProvider.notifier).addToFavoriteMeals(meal)
+        : ref
+            .read(favoriteMealsProvider.notifier)
+            .removeFromFavoriteMeals(meal);
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ThemeData theme = Theme.of(context);
+    List<Meal> favoriteMeals = ref.watch(favoriteMealsProvider);
+    Icon currentIcon = favoriteMeals.contains(meal) == true
+        ? const Icon(Icons.star)
+        : const Icon(Icons.star_border);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Details'),
+        actions: [
+          IconButton(
+              onPressed: () => addFavoriteMeal(ref, favoriteMeals),
+              icon: currentIcon)
+        ],
       ),
       body: Column(children: [
         FadeInImage(
-
           image: NetworkImage(meal.imageUrl),
           placeholder: MemoryImage(kTransparentImage),
           fit: BoxFit.cover,

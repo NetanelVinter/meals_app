@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/providers/favorite_meals_provider.dart';
 import 'package:meals_app/widgets/empty_meals.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
 import '../models/meal.dart';
-import '../providers/meals_provider.dart';
 
-class CategoryMealsScreen extends ConsumerWidget {
-  const CategoryMealsScreen({super.key});  
-  
+class FavoriteMealsScreen extends ConsumerWidget {
+  const FavoriteMealsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Meal> categoryMeals = ref.watch(mealsProvider);
+    List<Meal> favoriteMeals = ref.watch(favoriteMealsProvider);
     
-    Widget mainWidget = categoryMeals.isEmpty
+    Widget mainWidget = favoriteMeals.isEmpty
         ? const EmptyMeals()
         : ListView.builder(
-            itemCount: categoryMeals.length,
+            itemCount: favoriteMeals.length,
             itemBuilder: (context, index) {
-              return MealItem(categoryMeals[index]);
+              return MealItem(favoriteMeals[index]);
             },
           );
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Meals Category'),),
       body: mainWidget,
     );
   }

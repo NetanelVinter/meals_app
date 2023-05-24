@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals_app/constant/routes.dart';
-import 'package:meals_app/providers/favorite_meals_provider.dart';
 import 'package:meals_app/screens/category_screen.dart';
 import 'package:meals_app/screens/meals_screen.dart';
 
-import '../widgets/drawer_item.dart';
+import 'favorite_meals_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});  
@@ -19,8 +17,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class HomeScreenState extends ConsumerState<HomeScreen> {
-  int currentIndex = 0;
 
+  int currentIndex = 0;  
   String currentTitle = 'Categories';
 
   void onBottomTap(int index)
@@ -35,7 +33,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> activeFeed = [
       const CategoryScreen(),
-      MealsScreen(ref.watch(favoriteMealsProvider), showAppBar: false,),    
+      const FavoriteMealsScreen(),    
     ];
 
     return Scaffold(
@@ -43,8 +41,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
       body: IndexedStack(
         index: currentIndex,
         children: activeFeed,
-      ),
-      drawer: const DrawerItem(),
+      ),      
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
