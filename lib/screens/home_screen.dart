@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals_app/screens/category_screen.dart';
-import 'package:meals_app/screens/meals_screen.dart';
+import 'package:meals_app/widgets/drawer_item.dart';
 
 import 'favorite_meals_screen.dart';
 
@@ -38,6 +38,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(currentTitle)),
+      drawer: const DrawerItem(),
       body: IndexedStack(
         index: currentIndex,
         children: activeFeed,

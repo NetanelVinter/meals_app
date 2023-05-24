@@ -27,4 +27,4 @@ class CategoryMealsProvider extends StateNotifier<List<Meal>>
   }   
 }
 
-final mealsProvider = StateNotifierProvider<CategoryMealsProvider , List<Meal>>((ref) => CategoryMealsProvider());
+final categoryMealsProvider = StateNotifierProvider<CategoryMealsProvider , List<Meal>>((ref) => CategoryMealsProvider());

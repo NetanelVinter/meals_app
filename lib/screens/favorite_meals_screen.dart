@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals_app/providers/favorite_meals_provider.dart';
+import 'package:meals_app/providers/filter_provider.dart';
 import 'package:meals_app/widgets/empty_meals.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
@@ -11,8 +12,10 @@ class FavoriteMealsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Meal> favoriteMeals = ref.watch(favoriteMealsProvider);
-    
+    List<Meal> favoriteMeals = List.of(ref.watch(favoriteMealsProvider));
+    ref.watch(filtersProvider);
+    ref.read(filtersProvider.notifier).getFilterMeals(favoriteMeals);
+
     Widget mainWidget = favoriteMeals.isEmpty
         ? const EmptyMeals()
         : ListView.builder(
@@ -21,6 +24,7 @@ class FavoriteMealsScreen extends ConsumerWidget {
               return MealItem(favoriteMeals[index]);
             },
           );
+
     return Scaffold(
       body: mainWidget,
     );

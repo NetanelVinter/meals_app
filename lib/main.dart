@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/constant/routes.dart';
-import 'package:meals_app/screens/category_screen.dart';
-import 'package:meals_app/screens/detail_screen.dart';
+import 'package:meals_app/screens/filters_screen.dart';
 import 'package:meals_app/screens/home_screen.dart';
-import 'package:meals_app/screens/meals_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +30,8 @@ class MyApp extends StatelessWidget {
       theme: _theme,
       initialRoute: homeScreenRoute,
       routes: {
-        homeScreenRoute: (context) => const HomeScreen(),                   
+        homeScreenRoute: (context) => const HomeScreen(),      
+        filtersScreenRoute:(context) => const FilterScreen(),             
       },
     );
   }

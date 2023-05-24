@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals_app/providers/meals_provider.dart';
-import 'package:meals_app/screens/meals_screen.dart';
+import 'package:meals_app/providers/category_meals_provider.dart';
+import 'package:meals_app/screens/category_meals_screen.dart';
 
 import '../models/category.dart';
 
@@ -14,7 +14,7 @@ class CategoryItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () {
-        ref.read(mealsProvider.notifier).setStateByCategory(category);
+        ref.read(categoryMealsProvider.notifier).setStateByCategory(category);
         Navigator.push(context, MaterialPageRoute(builder: (context) => const CategoryMealsScreen()));
       },
       splashColor: Theme.of(context).primaryColorLight.withOpacity(0.7),
