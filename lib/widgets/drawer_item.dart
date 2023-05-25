@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/screens/login_screen.dart';
 
 import '../constant/routes.dart';
 
@@ -11,7 +12,7 @@ class DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
 
-    return Drawer(      
+    return Drawer(
         child: Column(
       children: [
         DrawerHeader(
@@ -49,7 +50,7 @@ class DrawerItem extends StatelessWidget {
           ),
           onTap: () => Navigator.pop(context),
         ),
-        ListTile(                    
+        ListTile(
           title: Text('Filters',
               style: theme.textTheme.titleLarge!
                   .copyWith(color: theme.colorScheme.onBackground)),
@@ -58,7 +59,30 @@ class DrawerItem extends StatelessWidget {
             size: 26,
             color: theme.colorScheme.onBackground,
           ),
-          onTap: () => Navigator.pushNamed(context, filtersScreenRoute),          
+          onTap: () {
+            Navigator.popAndPushNamed(context, filtersScreenRoute);            
+          },          
+        ),
+        const Spacer(),
+        ListTile(
+          title: Text('Login Page',
+              style: theme.textTheme.titleLarge!
+                  .copyWith(color: theme.colorScheme.onBackground)),
+          subtitle: Text(currentLogin!, 
+              style: theme.textTheme.titleMedium!
+                  .copyWith(color: theme.colorScheme.onBackground),),
+          leading: Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Icon(
+              Icons.arrow_back_sharp,            
+              size: 26,
+              color: theme.colorScheme.onBackground,
+            ),
+          ),
+          
+          onTap: () {
+            Navigator.pushReplacementNamed(context, loginScreenRoute);            
+          },          
         ),
       ],
     ));

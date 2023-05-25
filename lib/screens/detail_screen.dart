@@ -22,25 +22,42 @@ class DetailScreen extends ConsumerWidget {
     ThemeData theme = Theme.of(context);
     List<Meal> favoriteMeals = ref.watch(favoriteMealsProvider);
     Icon currentIcon = favoriteMeals.contains(meal) == true
-        ? const Icon(Icons.star)
-        : const Icon(Icons.star_border);
+        ? const Icon(
+            Icons.star,
+            key: ValueKey(1),
+          )
+        : const Icon(
+            Icons.star_border,
+            key: ValueKey(0),
+          );
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Details'),
         actions: [
           IconButton(
-              onPressed: () => addFavoriteMeal(ref, favoriteMeals),
-              icon: currentIcon)
+            onPressed: () => addFavoriteMeal(ref, favoriteMeals),
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              child: currentIcon,
+              transitionBuilder: (child, animation) => RotationTransition(
+                turns: Tween<double>(begin: 0.8, end: 1).animate(animation),
+                child: child,
+              ),
+            ),
+          )
         ],
       ),
       body: Column(children: [
-        FadeInImage(
-          image: NetworkImage(meal.imageUrl),
-          placeholder: MemoryImage(kTransparentImage),
-          fit: BoxFit.cover,
-          height: 250,
-          width: double.infinity,
+        Hero(
+          tag: meal.id,
+          child: FadeInImage(
+            image: NetworkImage(meal.imageUrl),
+            placeholder: MemoryImage(kTransparentImage),
+            fit: BoxFit.cover,
+            height: 250,
+            width: double.infinity,
+          ),
         ),
         const SizedBox(height: 6),
         Text(

@@ -8,8 +8,6 @@ import 'favorite_meals_screen.dart';
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});  
 
-  
-
   @override
   ConsumerState<HomeScreen> createState() {
     return HomeScreenState();
@@ -21,6 +19,11 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
   int currentIndex = 0;  
   String currentTitle = 'Categories';
 
+  final List<Widget> activeFeed = [
+      const CategoryScreen(),
+      const FavoriteMealsScreen(),    
+    ];
+
   void onBottomTap(int index)
   {
     setState(() {
@@ -31,18 +34,10 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> activeFeed = [
-      const CategoryScreen(),
-      const FavoriteMealsScreen(),    
-    ];
-
     return Scaffold(
       appBar: AppBar(title: Text(currentTitle)),
       drawer: const DrawerItem(),
-      body: IndexedStack(
-        index: currentIndex,
-        children: activeFeed,
-      ),      
+      body: activeFeed[currentIndex],      
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

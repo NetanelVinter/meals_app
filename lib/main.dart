@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/constant/routes.dart';
 import 'package:meals_app/screens/filters_screen.dart';
 import 'package:meals_app/screens/home_screen.dart';
+import 'package:meals_app/screens/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: _theme,
-      initialRoute: homeScreenRoute,
+      initialRoute: loginScreenRoute,
       routes: {
+        loginScreenRoute:(context) => const LoginScreen1(),
         homeScreenRoute: (context) => const HomeScreen(),      
         filtersScreenRoute:(context) => const FilterScreen(),             
       },
