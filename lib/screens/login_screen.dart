@@ -3,7 +3,7 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:meals_app/constant/routes.dart';
 
 var users = {
-  'uogi123@gmail.com': '1234',
+  'example@gmail.com': '1234',
 };
 
 String? currentLogin; 
