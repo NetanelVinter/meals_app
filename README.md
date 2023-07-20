@@ -24,7 +24,7 @@ The project is structured into several key directories:
 
 - `constant/`: This directory contains file(s) that define constant values used across the app.
 
-<img src="https://github.com/NetanelVinter/meals_app/assets/118343887/0cec8c04-7bc5-409d-9a93-81bc0b030842" width="500">
+
 
 ## State Management
 
@@ -53,7 +53,7 @@ The project uses the following dependencies:
 
 Open the app to view a list of meal categories. You can click on a category to view the meals within that category. Each meal can be clicked on to view its detailed information. You can also mark meals as favorites and apply filters based on your preferences.
 
-<img src="https://github.com/NetanelVinter/meals_app/assets/118343887/e2de6911-ee66-4ff1-ae36-f6259609ffda" width="500">
+<img src="https://github.com/NetanelVinter/meals_app/assets/118343887/3cf67cf6-30dc-447d-b564-29bc9af5ad02" width="500">
 
 Please note that the actual functionality may vary as this description is based on the project's code structure.
 
@@ -61,7 +61,10 @@ Please note that the actual functionality may vary as this description is based 
 
 Here are some additional screenshots of the application:
 
-<img src="https://github.com/NetanelVinter/meals_app/assets/118343887/3cf67cf6-30dc-447d-b564-29bc9af5ad02" width="500">
+<img src="https://github.com/NetanelVinter/meals_app/assets/118343887/0cec8c04-7bc5-409d-9a93-81bc0b030842" width="500">
+<img src="https://github.com/NetanelVinter/meals_app/assets/118343887/828d924c-2caf-46f8-a114-7f6ef089b527" width="500">
+
+
 
 ## Contributing
 
